@@ -20,7 +20,7 @@ permissions:
 
 jobs:
   ci:
-    uses: code-haven/code-haven/.github/workflows/devsecops.yml@feat/cpp
+    uses: roachseb/code-haven/.github/workflows/devsecops.yml@feat/cpp
     with:
       cpp_compiler: 'gcc'
       cpp_compiler_version: '13'
