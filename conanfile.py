@@ -8,7 +8,7 @@ class MathUtilsConan(ConanFile):
     license = "MIT"
     description = "A simple math utilities library — Code Haven demo project"
     settings = "os", "compiler", "build_type", "arch"
-    exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*"
+    exports_sources = "CMakeLists.txt", "src/*", "include/*", "tests/*", "cmake/*"
 
     def layout(self):
         cmake_layout(self)
