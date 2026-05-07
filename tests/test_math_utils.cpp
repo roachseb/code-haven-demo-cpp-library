@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+
 #include "math_utils/math_utils.h"
 
 TEST(MathUtilsTest, Add) {
@@ -20,7 +21,7 @@ TEST(MathUtilsTest, Multiply) {
 
 TEST(MathUtilsTest, Divide) {
     EXPECT_EQ(math_utils::divide(10, 2), 5);
-    EXPECT_EQ(math_utils::divide(7, 2), 3); // integer division
+    EXPECT_EQ(math_utils::divide(7, 2), 3);  // integer division
     EXPECT_THROW(math_utils::divide(1, 0), std::invalid_argument);
 }
 

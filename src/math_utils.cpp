@@ -1,4 +1,5 @@
 #include "math_utils/math_utils.h"
+
 #include <stdexcept>
 
 namespace math_utils {
@@ -69,4 +70,4 @@ int gcd(int a, int b) {
     return a;
 }
 
-} // namespace math_utils
+}  // namespace math_utils

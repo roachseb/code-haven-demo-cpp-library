@@ -23,4 +23,4 @@ bool is_prime(int n);
 /// Compute the greatest common divisor
 int gcd(int a, int b);
 
-} // namespace math_utils
+}  // namespace math_utils

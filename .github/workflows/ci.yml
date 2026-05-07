@@ -35,4 +35,5 @@ jobs:
       dotnet_disabled: true
       php_disabled: true
       golang_disabled: true
+      pages_disabled: false
     secrets: inherit
