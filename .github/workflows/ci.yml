@@ -26,7 +26,6 @@ jobs:
       cpp_compiler_version: '13'
       cpp_standard: '20'
       cpp_coverage_enabled: true
-      docker_registry: 'ghcr.io'
       # Disable everything else
       maven_disabled: true
       gradle_disabled: true

@@ -16,14 +16,45 @@ target_include_directories(math-utils
         $<INSTALL_INTERFACE:include>
 )
 
-# Install rules (for Conan packaging)
-install(TARGETS math-utils
-    LIBRARY DESTINATION lib
-    ARCHIVE DESTINATION lib
-)
-install(DIRECTORY include/ DESTINATION include)
+# ── Install & CMake Package Export ────────────────────────────
+# This makes the library consumable via find_package(math-utils)
+include(GNUInstallDirs)
+include(CMakePackageConfigHelpers)
 
-# Testing
+install(TARGETS math-utils
+    EXPORT math-utils-targets
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    INCLUDES DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+)
+install(DIRECTORY include/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+
+# Generate and install CMake config files
+install(EXPORT math-utils-targets
+    FILE math-utils-targets.cmake
+    NAMESPACE math-utils::
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/math-utils
+)
+
+write_basic_package_version_file(
+    "${CMAKE_CURRENT_BINARY_DIR}/math-utils-config-version.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion
+)
+
+configure_package_config_file(
+    "${CMAKE_CURRENT_SOURCE_DIR}/cmake/math-utils-config.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/math-utils-config.cmake"
+    INSTALL_DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/math-utils
+)
+
+install(FILES
+    "${CMAKE_CURRENT_BINARY_DIR}/math-utils-config.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/math-utils-config-version.cmake"
+    DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/math-utils
+)
+
+# ── Testing ───────────────────────────────────────────────────
 option(BUILD_TESTS "Build unit tests" ON)
 if(BUILD_TESTS)
     enable_testing()
